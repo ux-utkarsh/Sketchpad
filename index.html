@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hand-Tracking Gravity Drawing Tool, Wiggle Physics Sketchpad, Made by Utkarsh Dhairya Panwar</title>
+  <meta name="description"
+    content="A minimal hand-tracking drawing tool where you sketch in real time using your camera. Enable gravity for realistic collisions, add wiggle motion, change stroke color and size, and create physics-based sketches directly in the browser. Made by Utkarsh Dhairya Panwar." />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <!-- IBM Plex Mono Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <!-- Hide video element, use for feed -->
+  <video id="webcam" autoplay playsinline style="display: none;"></video>
+
+  <!-- Canvas for rendering camera frame (if needed or you can just draw to one) and strokes/physics -->
+  <!-- I will use one canvas for drawing the camera background and physics. -->
+  <canvas id="output_canvas" class="output_canvas"></canvas>
+
+  <!-- UI Panel -->
+  <div id="ui-panel">
+    <div class="controls-row">
+      <!-- STROKE -->
+      <div class="control-group" id="stroke-btn" style="cursor: pointer;">
+        <label style="cursor: pointer;">STROKE</label>
+        <div class="stroke-preview-container">
+          <span class="stroke-dot-preview" id="stroke-preview" data-size="M" style="width: 14px; height: 14px;"></span>
+        </div>
+      </div>
+
+      <!-- COLOR -->
+      <div class="control-group">
+        <label>COLOR</label>
+        <div class="color-picker-wrapper">
+          <input type="color" id="color-picker" value="#CC5DE8" />
+          <div class="color-preview" id="color-preview" style="background-color: #CC5DE8;"></div>
+          <span id="color-hex" class="hex-value">#CC5DE8</span>
+        </div>
+      </div>
+
+      <!-- GRAVITY -->
+      <div class="control-group toggle-group">
+        <label for="gravity-toggle">GRAVITY</label>
+        <label class="switch">
+          <input type="checkbox" id="gravity-toggle">
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <!-- WIGGLE -->
+      <div class="control-group toggle-group">
+        <label for="wiggle-toggle">WIGGLE</label>
+        <label class="switch">
+          <input type="checkbox" id="wiggle-toggle">
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="actions-group" style="display: flex; gap: 8px; margin-left: auto;">
+        <button class="action-btn filled" id="save-btn">SAVE</button>
+        <button class="action-btn" id="clear-btn">CLEAR</button>
+      </div>
+    </div>
+
+    <div class="footer-row">
+      <a href="https://www.utkarshdesign.com" target="_blank" class="credits-link">Built by Utkarsh</a>
+    </div>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>

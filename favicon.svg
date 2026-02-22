@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#ba298d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Sketched star look with staggered lines -->
+  <path d="M 50 10 L 61 40 L 92 40 L 66 60 L 76 90 L 50 72 L 24 90 L 34 60 L 8 40 L 39 40 Z" />
+  <path d="M 48 8 L 63 38 L 94 38 L 64 58 L 74 92 L 48 74 L 22 92 L 36 58 L 6 38 L 41 38 Z" stroke-width="4" opacity="0.6" />
+  <path d="M 52 12 L 59 42 L 90 42 L 68 62 L 78 88 L 52 70 L 26 88 L 32 62 L 10 42 L 37 42 Z" stroke-width="3" opacity="0.4" />
+</svg>

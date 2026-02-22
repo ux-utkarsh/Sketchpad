@@ -1,0 +1,261 @@
+/* CSS Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1D1D1F;
+  font-family: 'IBM Plex Mono', monospace;
+  overflow: hidden;
+  color: #1D1D1F;
+}
+
+/* Fullscreen Background & Canvas */
+.output_canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  /* behind UI */
+  background-color: #1D1D1F;
+  /* solid dark background when camera is hidden/denied */
+}
+
+/* UI Panel Container */
+#ui-panel {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 20px 24px;
+  z-index: 10;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#ui-panel:active {
+  cursor: grabbing;
+}
+
+/* Top Row: Controls */
+.controls-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Generics for Control Blocks */
+.control-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.control-group label {
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #1D1D1F;
+}
+
+/* Stroke Selector */
+.stroke-preview-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #1D1D1F;
+  background-color: transparent;
+}
+
+.stroke-dot-preview {
+  background-color: #1D1D1F;
+  border-radius: 50%;
+  display: inline-block;
+  transition: width 0.2s, height 0.2s;
+}
+
+/* Color Picker */
+.color-picker-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+/* Hide real input, use customized circle */
+input[type="color"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.color-preview {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  /* Let clicks pass to the input */
+}
+
+.hex-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1D1D1F;
+  text-transform: uppercase;
+}
+
+/* Toggle Switch (Toggles) */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #1D1D1F;
+  /* the "off" state in design looks like #1D1D1F inner container or white maybe? Wait, outline mode. Let's make it look like a track */
+  border: 1px solid #1D1D1F;
+  background: white;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #1D1D1F;
+  transition: .4s;
+}
+
+.slider.round {
+  border-radius: 20px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+input:checked+.slider {
+  background-color: #1D1D1F;
+  border-color: #1D1D1F;
+}
+
+input:checked+.slider:before {
+  transform: translateX(20px);
+  background-color: #FFFFFF;
+}
+
+/* Action Buttons */
+.action-btn {
+  background-clip: padding-box;
+  background: transparent;
+  border: 1px solid #1D1D1F;
+  color: #1D1D1F;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.action-btn:hover {
+  background-color: #1D1D1F;
+  color: #FFFFFF;
+}
+
+.action-btn:active {
+  transform: scale(0.98);
+}
+
+.action-btn.filled {
+  background-color: #1D1D1F;
+  color: #FFFFFF;
+}
+
+.action-btn.filled:hover {
+  background-color: #333333;
+}
+
+/* Footer Link */
+.footer-row {
+  text-align: center;
+}
+
+.credits-link {
+  font-size: 12px;
+  color: #1D1D1F;
+  text-decoration: none;
+  font-weight: 400;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.credits-link:hover {
+  opacity: 1;
+}
+
+/* Responsive Mobile Rules */
+@media (max-width: 600px) {
+  #ui-panel {
+    bottom: 20px;
+    width: calc(100% - 24px);
+    /* 12px padding on sides */
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .controls-row {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+  }
+
+  .control-group label {
+    font-size: 12px;
+    /* Slightly smaller labels for mobile */
+  }
+
+  .hex-value {
+    font-size: 12px;
+  }
+}
